@@ -6,7 +6,10 @@
 
 real-time 3D tracking pipeline for fast-moving shuttlecocks occupying as little as 0.024% of a video frame
 
-<img src="images/depth.jpg" alt="Backyard badminton captured as a LiDAR depth map alongside the RGB camera image" width="800" />
+<div style="display: flex; align-items: center; gap: 20px;">
+<img src="images/court.jpg" alt="Court mapping experiment from the project demo" width="390" />
+<img src="images/trajectory.jpg" alt="Roboflow shuttlecock detection and trajectory experiment" width="390" />
+</div>
 
 [view on Devpost](https://devpost.com/software/goodminton)
 
@@ -36,10 +39,8 @@ flowchart LR
 - [`backend/streaming.py`](backend/streaming.py) connects to the first Record3D device over USB, reads RGB and depth frames, and retrieves camera intrinsics and pose (TrueDepth frames are mirrored before being returned)
 - [`backend/motion.py`](backend/motion.py) compares consecutive grayscale frames, masking out pixels that exceed a certain difference (in this case, 30/255)
 - [`backend/main.py`](backend/main.py) adjusts the input for the Roboflow model `badminton-crsqf/1` on the motion image with confidence `0.3`. non-maximum suppression removes overlapping detections; SORT associates detections between frames
-<div style="display: flex; align-items: center; gap: 20px;">
-<img src="images/court.jpg" alt="Court mapping experiment from the project demo" width="390" />
-<img src="images/trajectory.jpg" alt="Roboflow shuttlecock detection and trajectory experiment" width="390" />
-</div>
+
+<img src="images/depth.jpg" alt="Backyard badminton captured as a LiDAR depth map alongside the RGB camera image" width="800" />
 
 ### when the birdie disappears
 
